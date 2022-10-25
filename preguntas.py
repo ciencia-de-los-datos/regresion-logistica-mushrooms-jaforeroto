@@ -122,7 +122,9 @@ def pregunta_03():
     # Importe LogisticRegressionCV
     # Importe OneHotEncoder
     # Importe Pipeline
-    from ____ import ____
+    from sklearn.linear_model import LogisticRegressionCV
+    from sklearn.preprocessing import OneHotEncoder
+    from sklearn.pipeline import Pipeline
 
     # Cargue las variables.
     X_train, _, y_train, _ = pregunta_02()
@@ -131,14 +133,14 @@ def pregunta_03():
     # LogisticRegression con una regularización Cs=10
     pipeline = Pipeline(
         steps=[
-            ("____", ____()),
-            ("____", ____(____)),
+            ("oneHotEncoder", OneHotEncoder()),
+            ("logisticRegression", LogisticRegressionCV(Cs=10)),
         ],
     )
 
     # Entrene el pipeline con los datos de entrenamiento.
-    ____.____(____, ____)
-
+    pipeline.fit(X_train, y_train)
+    
     # Retorne el pipeline entrenado
     return pipeline
 
@@ -149,7 +151,7 @@ def pregunta_04():
     """
 
     # Importe confusion_matrix
-    from ____ import ____
+    from sklearn.metrics import confusion_matrix
 
     # Obtenga el pipeline de la pregunta 3.
     pipeline = pregunta_03()
@@ -158,7 +160,7 @@ def pregunta_04():
     X_train, X_test, y_train, y_test = pregunta_02()
 
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
-    cfm_train = ____(
+    cfm_train = confusion_matrix(
         y_true=____,
         y_pred=____.____(____),
     )
